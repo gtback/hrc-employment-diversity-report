@@ -1,0 +1,17 @@
+{% extends "layout.html" %}
+{% block body %}
+<section class="jumbotron">
+  <div class="header-text col-md-12">
+    <h1>IncluCivics</h1>
+    <p>Brought to you by <a href="http://www.codefornashville.org">Code for Nashville</a><br> and the <a href="#" id="ntp">Nashville Transparency Project</a></p>
+    <img src="{{ url_for('static', filename='img/logo.png')}}" /> 
+  </div>
+</section>
+<section class="main-content">
+  <div class="container">
+    <h2>About Inclucivics</h2>
+    <p> Thank you for visiting IncluCivics! This platform was born from the IncluCivics report that was produced by the Metro Human Relations Commission in January of 2015. The report analyzed the diversity and equity of Metro Nashville government in regards to its employees. Code for Nashville graciously created this site and maintains it free of charge.</p>
+    <p>The platform exists for two reasons The first is to show the community the diversity and equity of Metro government and its departments in real time. The second is to track progress toward ensuring that Metro government is reflective of the community it serves. If you have questions about the report, please contact the Metro Human Relations Commission.</p>
+  </div>
+</section>
+{% endblock %}

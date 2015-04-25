@@ -1,36 +1,23 @@
-$.getJSON("/api/departments", function (response) {
-    var departments = $("#department");
-
-    $.each(response.departments, function (val, text) {
-        departments.append($("<option></option>").val(text).html(text));
-    });
-
-});
-
-
 $(function () {
 
     $(document).ready(function () {
-
-        $('#graph-container')
-            .prepend("<p> " +
-            "Thank you for visiting IncluCivics! This platform was born from the IncluCivics report that was produced by the Metro Human Relations Commission in January of 2015. The report analyzed the diversity and equity of Metro Nashville government in regards to its employees. Code for Nashville graciously created this site and maintains it free of charge."
-            +
-            "</p>"
-            +
-            "<p>"
-            +
-            "The platform exists for two reasons The first is to show the community the diversity and equity of Metro government and its departments in real time. The second is to track progress toward ensuring that Metro government is reflective of the community it serves. If you have questions about the report, please contact the Metro Human Relations Commission."
-            +
-            "</p>"
-        );
-
-
         $('select#department, select#demographics').change(function () {
-
             reloadCharts();
         });
 
+        // Populate dropdown list and make a default selection
+        $.getJSON("/api/departments", function (response) {
+            var departments = $("#department");
+
+            $.each(response.departments, function (val, text) {
+                departments.append($("<option></option>").val(text).html(text));
+            });
+
+            // Load the charts
+            departments.val("All Departments")
+
+            reloadCharts();
+        });
     });
 
     Highcharts.getOptions().plotOptions.pie.colors = (function () {
@@ -43,7 +30,6 @@ $(function () {
         }
         return colors;
     }());
-
 });
 
 function reloadCharts() {
